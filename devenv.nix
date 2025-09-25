@@ -7,6 +7,7 @@
   claude.code.enable = true;
 
   enterShell = ''
+    echo ""
     echo "🚀 Welcome to your Claude Code development environment!"
     echo "📋 This template includes:"
     echo "   • Claude Code CLI ready to use"
