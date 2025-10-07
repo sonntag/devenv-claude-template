@@ -1,10 +1,27 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   packages = with pkgs; [
     git
     claude-code
   ];
 
-  claude.code.enable = true;
+  claude.code = {
+    enable = true;
+    mcpServers = {
+      # Local devenv MCP server
+      devenv = {
+        type = "stdio";
+        command = "devenv";
+        args = ["mcp"];
+        env = {
+          DEVENV_ROOT = config.devenv.root;
+        };
+      };
+    };
+  };
 
   enterShell = ''
     echo ""
